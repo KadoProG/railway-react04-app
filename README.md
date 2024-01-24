@@ -1,3 +1,8 @@
+## 作業ログ
+
+https://qiita.com/takatoshiinaoka/items/34fce990a36b7d9c4029
+こちらのサイトをもとにprettier, lintの構築をしました
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
