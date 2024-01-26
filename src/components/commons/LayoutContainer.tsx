@@ -15,6 +15,7 @@ import {
 import Button from '@mui/material/Button'
 import MenuIcon from '@mui/icons-material/Menu'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const navItems = ['BLOGS', 'PROFILE']
 const drawerWidth = 240
@@ -25,6 +26,7 @@ interface LayoutProps {
 
 export const LayoutContainer: React.FC<LayoutProps> = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const navigation = useNavigate()
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState)
@@ -33,7 +35,7 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
   const container = window !== undefined ? () => document.body : undefined
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar>
@@ -46,13 +48,16 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-            textAlign={{ xs: 'center', sm: 'left' }}
-          >
-            カドブログ
+          <Typography textAlign={{ xs: 'center', sm: 'left' }} flexGrow={1}>
+            <Button
+              onClick={() => navigation('/')}
+              sx={{
+                color: '#fff',
+                fontSize: 24,
+              }}
+            >
+              カドブログ
+            </Button>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
@@ -100,6 +105,12 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
       <Box component="main" mx="auto">
         <Toolbar />
         {props.children}
+      </Box>
+      <Box component="footer" bgcolor="primary.main" mt={4} p={2} color="white">
+        <Typography>カドブログ</Typography>
+        <Typography variant="body2" align="center">
+          &copy;KadoBloG 2024
+        </Typography>
       </Box>
     </Box>
   )

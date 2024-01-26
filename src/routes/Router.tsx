@@ -1,6 +1,7 @@
 import { HomePage } from '../pages/HomePage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import { BlogsPage } from '../pages/BlogsPage'
 
 export const Router = () => (
   <BrowserRouter>
@@ -11,7 +12,7 @@ export const Router = () => (
       {/* <Route path="/profile" element={<Profile />} /> */}
       {/* <Route path="/new" element={<New />} /> */}
       {/* <Route path="/detail/:bookId" element={<Detail />} /> */}
-      {/* <Route path="/edit/:bookId" element={<Edit />} /> */}
+      <Route path="/blogs/:bookId" element={<BlogsPage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
