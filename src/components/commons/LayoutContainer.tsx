@@ -97,7 +97,7 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
           </Box>
         </Drawer>
       </nav>
-      <Box component="main">
+      <Box component="main" mx="auto">
         <Toolbar />
         {props.children}
       </Box>
