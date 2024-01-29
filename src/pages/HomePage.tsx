@@ -7,14 +7,28 @@ import {
   Chip,
   Container,
   Grid,
+  Skeleton,
   Typography,
 } from '@mui/material'
 import React from 'react'
 import { LayoutContainer } from '../components/commons/LayoutContainer'
 import { useNavigate } from 'react-router-dom'
 
+/**
+ * 〇〇秒待つ関数
+ * @param waitTime ms 待つ
+ * @returns 一応空配列
+ */
+const waitFunc = (waitTime: number) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([])
+    }, waitTime)
+  })
+
 const fetchGETNotionBlogData = async () => {
   try {
+    await waitFunc(1000)
     return {
       blogs: [
         {
@@ -70,11 +84,19 @@ export const HomePage: React.FC = () => {
   >([])
   const navigation = useNavigate()
 
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+
   // 起動時に実行
   React.useEffect(() => {
-    fetchGETNotionBlogData().then((res) => {
-      setBlogList(res.blogs)
-    })
+    setIsLoading(true)
+    fetchGETNotionBlogData()
+      .then((res) => {
+        setBlogList(res.blogs)
+        setIsLoading(false)
+      })
+      .catch(() => {
+        setIsLoading(false)
+      })
   }, [])
 
   return (
@@ -94,9 +116,40 @@ export const HomePage: React.FC = () => {
           ブログ一覧
         </Typography>
         <Grid container spacing={1}>
+          {isLoading && (
+            <>
+              {[1, 2, 3, 4, 5, 6].map((v) => (
+                <Grid item key={v} xs={12} sm={6} md={4}>
+                  <Card>
+                    <Skeleton
+                      variant="rounded"
+                      animation="wave"
+                      width="auto"
+                      height={194}
+                    />
+                    <CardContent>
+                      <Skeleton
+                        variant="rounded"
+                        animation="wave"
+                        width={100}
+                        height={40}
+                      />
+                      <Box my={1}></Box>
+                      <Skeleton
+                        variant="rounded"
+                        animation="wave"
+                        width="100%"
+                        height={50}
+                      />
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </>
+          )}
           {blogList.map((blogItem) => (
             <Grid item key={blogItem.id} xs={12} sm={6} md={4}>
-              <Card key={blogItem.id}>
+              <Card>
                 <CardActionArea
                   onClick={() => navigation(`/blogs/${blogItem.id}`)}
                 >
@@ -111,7 +164,9 @@ export const HomePage: React.FC = () => {
                       <Chip key={category.id} label={category.label} />
                     ))}
 
-                    <Typography fontWeight="bold">{blogItem.title}</Typography>
+                    <Typography fontWeight="bold" pt={1}>
+                      {blogItem.title}
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>

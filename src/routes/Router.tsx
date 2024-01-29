@@ -12,7 +12,7 @@ export const Router = () => (
       {/* <Route path="/profile" element={<Profile />} /> */}
       {/* <Route path="/new" element={<New />} /> */}
       {/* <Route path="/detail/:bookId" element={<Detail />} /> */}
-      <Route path="/blogs/:bookId" element={<BlogsPage />} />
+      <Route path="/blogs/:blogId" element={<BlogsPage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>

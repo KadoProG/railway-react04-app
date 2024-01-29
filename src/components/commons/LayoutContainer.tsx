@@ -87,7 +87,14 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
         >
           <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-              MUI
+              <Button
+                onClick={() => navigation('/')}
+                sx={{
+                  fontSize: 24,
+                }}
+              >
+                カドブログ
+              </Button>
             </Typography>
             <Divider />
             <List>
