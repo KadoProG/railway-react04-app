@@ -13,6 +13,7 @@ import {
 import React from 'react'
 import { LayoutContainer } from '../components/commons/LayoutContainer'
 import { useNavigate } from 'react-router-dom'
+import { PrismaClient } from '@prisma/client'
 
 /**
  * 〇〇秒待つ関数
@@ -26,9 +27,12 @@ const waitFunc = (waitTime: number) =>
     }, waitTime)
   })
 
+// const prisma = new PrismaClient()
+
 const fetchGETNotionBlogData = async () => {
   try {
     await waitFunc(1000)
+    // const data = await prisma.blog.findMany()
     return {
       blogs: [
         {
