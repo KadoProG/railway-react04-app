@@ -13,6 +13,7 @@ import {
 import React from 'react'
 import { LayoutContainer } from '../components/commons/LayoutContainer'
 import { useNavigate } from 'react-router-dom'
+import { IBlogSummary } from '../const'
 
 /**
  * 〇〇秒待つ関数
@@ -28,7 +29,7 @@ const waitFunc = (waitTime: number) =>
 
 // const prisma = new PrismaClient()
 
-const fetchGETNotionBlogData = async () => {
+const fetchGETNotionBlogData = async (): Promise<{ blogs: IBlogSummary[] }> => {
   try {
     await waitFunc(1000)
     // const data = await prisma.blog.findMany()
@@ -77,14 +78,7 @@ const fetchGETNotionBlogData = async () => {
 }
 
 export const HomePage: React.FC = () => {
-  const [blogList, setBlogList] = React.useState<
-    {
-      id: number
-      title: string
-      imagePath: string
-      categories: { id: number; label: string }[]
-    }[]
-  >([])
+  const [blogList, setBlogList] = React.useState<IBlogSummary[]>([])
   const navigation = useNavigate()
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
