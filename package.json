@@ -2,15 +2,21 @@
   "name": "railway-react04-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://KadoProG.github.io/railway-react04-app",
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "lint:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
     "lint:eslint": "eslint --ext \".js,.ts,.jsx,.tsx\" --ignore-path .gitignore .",
     "fix:eslint": "npm run lint:eslint --fix",
     "prepare": "husky install",
     "lint": "npm run lint:prettier && npm run lint:eslint",
-    "fix": "npm run fix:prettier && npm run fix:eslint"
+    "fix": "npm run fix:prettier && npm run fix:eslint",
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
     "extends": [
