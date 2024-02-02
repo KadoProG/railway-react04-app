@@ -15,6 +15,8 @@ import { LayoutContainer } from '../components/commons/LayoutContainer'
 import { useNavigate } from 'react-router-dom'
 import { IBlogSummary } from '../const'
 
+const URL = process.env.PUBLIC_URL
+
 /**
  * 〇〇秒待つ関数
  * @param waitTime ms 待つ
@@ -148,12 +150,12 @@ export const HomePage: React.FC = () => {
             <Grid item key={blogItem.id} xs={12} sm={6} md={4}>
               <Card>
                 <CardActionArea
-                  onClick={() => navigation(`/blogs/${blogItem.id}`)}
+                  onClick={() => navigation(`${URL}/blogs/${blogItem.id}`)}
                 >
                   <CardMedia
                     component="img"
                     height="194"
-                    image={blogItem.imagePath}
+                    image={`${URL}${blogItem.imagePath}`}
                     alt="Paella dish"
                   />
                   <CardContent>

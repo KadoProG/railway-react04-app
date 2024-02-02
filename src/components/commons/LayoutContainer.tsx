@@ -17,6 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+const URL = process.env.PUBLIC_URL
 const navItems = ['BLOGS', 'PROFILE']
 const drawerWidth = 240
 
@@ -50,7 +51,7 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
           </IconButton>
           <Typography textAlign={{ xs: 'center', sm: 'left' }} flexGrow={1}>
             <Button
-              onClick={() => navigation('/')}
+              onClick={() => navigation(`${URL}/`)}
               sx={{
                 color: '#fff',
                 fontSize: 24,
@@ -88,7 +89,7 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
           <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
               <Button
-                onClick={() => navigation('/')}
+                onClick={() => navigation(`${URL}/`)}
                 sx={{
                   fontSize: 24,
                 }}

@@ -1,5 +1,6 @@
 import { Box, Chip, Typography } from '@mui/material'
 import { LayoutContainer } from '../components/commons/LayoutContainer'
+const URL = process.env.PUBLIC_URL
 
 export const BlogsPage = () => (
   <LayoutContainer>
@@ -13,7 +14,7 @@ export const BlogsPage = () => (
       <Chip label="最新記事" />
       <Box>
         <Box display="flex" justifyContent="center">
-          <img src="/images/logo512.png" width="80%" alt="画像" />
+          <img src={`${URL}/images/logo512.png`} width="80%" alt="画像" />
         </Box>
         <Typography>
           こんにちは今回はタイピング練習をしていこうと思いますそれでは本日も行ってみましょう。
@@ -32,7 +33,11 @@ export const BlogsPage = () => (
           人は成長欲求というものを持っています。理由は様々です。承認欲求を満たしたい、人生の満足度を上げたい、そう人は必ず思っており、私もその一人です。しかし、ずっと頑張っているかと言うとそうではありません。時には休み、自分のやりたいことに浸る時間も必要です。
         </Typography>
         <Box display="flex" justifyContent="center">
-          <img src="/images/PSX_20220620_075347.jpg" width="80%" alt="画像" />
+          <img
+            src={`${URL}/images/PSX_20220620_075347.jpg`}
+            width="80%"
+            alt="画像"
+          />
         </Box>
         <Typography>
           私は2021年4月にガジェット沼にハマってしまい、それからまさかのプログラマーという道に進むきっかけにもなりました。当初はPCを使ってる人すげー、という印象で、いい感じの部屋・場所でいい感じの仕事をしている、「好きなことで生きていく」を貫いているイメージが有りました。
