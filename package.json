@@ -2,7 +2,7 @@
   "name": "railway-react04-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://KadoProG.github.io/railway-react04-app",
+  "homepage": "https://kadoprog.github.io/railway-react04-app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
