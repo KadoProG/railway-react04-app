@@ -8,8 +8,5 @@
     "main.dff1a81b.js.map": "/railway-react04-app/static/js/main.dff1a81b.js.map",
     "787.740dba8a.chunk.js.map": "/railway-react04-app/static/js/787.740dba8a.chunk.js.map"
   },
-  "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.dff1a81b.js"
-  ]
+  "entrypoints": ["static/css/main.e6c13ad2.css", "static/js/main.dff1a81b.js"]
 }
