@@ -14,7 +14,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "ignorePatterns": ["docs/*"],
+  "ignorePatterns": ["docs/*", "webpack.config.js"],
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
     "no-console": "warn",
