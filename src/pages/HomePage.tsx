@@ -12,7 +12,6 @@ import {
 } from '@mui/material'
 import React from 'react'
 import { LayoutContainer } from '../components/commons/LayoutContainer'
-import { useNavigate } from 'react-router-dom'
 import { IBlogSummary } from '../const'
 
 const URL = process.env.PUBLIC_URL
@@ -81,7 +80,7 @@ const fetchGETNotionBlogData = async (): Promise<{ blogs: IBlogSummary[] }> => {
 
 export const HomePage: React.FC = () => {
   const [blogList, setBlogList] = React.useState<IBlogSummary[]>([])
-  const navigation = useNavigate()
+  // const navigation = useNavigate()
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
@@ -150,7 +149,8 @@ export const HomePage: React.FC = () => {
             <Grid item key={blogItem.id} xs={12} sm={6} md={4}>
               <Card>
                 <CardActionArea
-                  onClick={() => navigation(`${URL}/blogs/${blogItem.id}`)}
+                  href={`${URL}/blogs/${blogItem.id}`}
+                  // onClick={() => navigation(`${URL}/blogs/${blogItem.id}`)}
                 >
                   <CardMedia
                     component="img"

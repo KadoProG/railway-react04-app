@@ -11,17 +11,18 @@ datasource db {
 }
 
 
-model Caterory {
-  id    String @id @default(uuid()) @map("_category_id")
-  label String @unique
-  blogs Blog[]
+model Category {
+  categoryId   String @id @default(uuid()) @map("_category_id")
+  label        String @unique
+  blogs        Blog[]
 }
 
 model Blog {
   id           String @id @default(uuid()) @map("_blog_id")
   title        String
   tag          String
-  categories   Caterory[]
+  categoryId   String
+  categories   Category @relation(fields: [categoryId], references: [categoryId])
   contents     String
   imagePath    String
   createdAt    DateTime  @default(now()) // 作成日時
