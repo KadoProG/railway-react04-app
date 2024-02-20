@@ -16,7 +16,7 @@ import Button from '@mui/material/Button'
 import MenuIcon from '@mui/icons-material/Menu'
 import React from 'react'
 
-const URL = process.env.PUBLIC_URL
+const URL = ''
 const navItems = ['BLOGS', 'PROFILE']
 const drawerWidth = 240
 
@@ -26,7 +26,6 @@ interface LayoutProps {
 
 export const LayoutContainer: React.FC<LayoutProps> = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  // const navigation = useNavigate()
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState)
@@ -52,7 +51,6 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
           <Typography textAlign={{ xs: 'center', sm: 'left' }} flexGrow={1}>
             <Button
               href={`${URL}/`}
-              // onClick={() => navigation(`${URL}/`)}
               sx={{
                 color: '#fff',
                 fontSize: 24,
@@ -91,7 +89,6 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
             <Typography variant="h6" sx={{ my: 2 }}>
               <Button
                 href={`${URL}/`}
-                // onClick={() => navigation(`${URL}/`)}
                 sx={{
                   fontSize: 24,
                 }}

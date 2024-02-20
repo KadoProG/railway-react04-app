@@ -3,4 +3,7 @@ export interface IBlogSummary {
   title: string
   imagePath: string
   category: { categoryId: string; label: string } | null
+  contents: string
+  createdAt: Date
+  updatedAt: Date
 }

@@ -3,7 +3,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import ReactDOMServer from 'react-dom/server'
 import React from 'react'
-import App from '../src/App'
+import { HomePage } from '../src/pages/HomePage'
+import { BlogPage } from '../src/pages/BlogPage'
+import { NotFoundPage } from '../src/pages/NotFoundPage'
 const app = express()
 const port = 9000
 
@@ -20,24 +22,16 @@ app.use(
 
 app.use(bodyParser.json())
 
-// app.get(`/`, async (req, res) => {
-//   res.json({ url: `http://localhost:${port}/${URL}/` })
-// })
-
 app.get(`${URL}/`, async (req, res) => {
-  // const result = await prisma.blog.findMany({
-  //   include: {
-  //     category: true,
-  //   },
-  // })
-  // const initData = JSON.stringify(result)
+  const blogList = await prisma.blog.findMany({
+    include: {
+      category: true,
+    },
+  })
 
   // AppコンポーネントをHTML文字列に変換
-  const jsx = React.createElement(App)
+  const jsx = React.createElement(HomePage, { blogList })
   const reactDom = ReactDOMServer.renderToString(jsx)
-
-  // console.log(reactDom)
-  // res.send(initData)
 
   // HTMLに変換されたAppコンポーネントを埋め込んだHTMLを作成
   const html = `
@@ -55,6 +49,44 @@ app.get(`${URL}/`, async (req, res) => {
 
   // コンポーネントが埋め込まれたHTMLをレスポンス
   res.send(html)
+})
+
+app.get(`${URL}/blogs/:blogId`, async (req, res) => {
+  const blogId = req.params.blogId
+  const blogItem = await prisma.blog.findUnique({
+    where: { id: blogId },
+    include: {
+      category: true,
+    },
+  })
+
+  if (blogItem === null) {
+    res.writeHead(404)
+  }
+
+  // AppコンポーネントをHTML文字列に変換
+  const jsx =
+    blogItem === null
+      ? React.createElement(NotFoundPage)
+      : React.createElement(BlogPage, { blogItem })
+  const reactDom = ReactDOMServer.renderToString(jsx)
+
+  // HTMLに変換されたAppコンポーネントを埋め込んだHTMLを作成
+  const html = `
+      <!DOCTYPE html>
+      <html lang="ja">
+      <head>
+          <meta charset="utf-8" />
+          <script src="client.js" async defer></script>
+      </head>
+      <body>
+          <div id="root">${reactDom}</div>
+      </body>
+      </html>
+  `
+
+  // コンポーネントが埋め込まれたHTMLをレスポンス
+  res.end(html)
 })
 
 app.get(`${URL}/api/`, async (req, res) => {
