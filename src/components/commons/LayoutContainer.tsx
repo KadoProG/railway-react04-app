@@ -32,7 +32,8 @@ export const LayoutContainer: React.FC<LayoutProps> = (props) => {
     setMobileOpen((prevState) => !prevState)
   }
 
-  const container = window !== undefined ? () => document.body : undefined
+  const container =
+    typeof window !== 'undefined' ? () => document.body : undefined
 
   return (
     <Box>
