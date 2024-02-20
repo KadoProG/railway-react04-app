@@ -1,12 +1,15 @@
 {
   "files": {
     "main.css": "/railway-react04-app/static/css/main.e6c13ad2.css",
-    "main.js": "/railway-react04-app/static/js/main.dff1a81b.js",
-    "static/js/787.740dba8a.chunk.js": "/railway-react04-app/static/js/787.740dba8a.chunk.js",
+    "main.js": "/railway-react04-app/static/js/main.736df143.js",
+    "static/js/111.4742faa3.chunk.js": "/railway-react04-app/static/js/111.4742faa3.chunk.js",
     "index.html": "/railway-react04-app/index.html",
     "main.e6c13ad2.css.map": "/railway-react04-app/static/css/main.e6c13ad2.css.map",
-    "main.dff1a81b.js.map": "/railway-react04-app/static/js/main.dff1a81b.js.map",
-    "787.740dba8a.chunk.js.map": "/railway-react04-app/static/js/787.740dba8a.chunk.js.map"
+    "main.736df143.js.map": "/railway-react04-app/static/js/main.736df143.js.map",
+    "111.4742faa3.chunk.js.map": "/railway-react04-app/static/js/111.4742faa3.chunk.js.map"
   },
-  "entrypoints": ["static/css/main.e6c13ad2.css", "static/js/main.dff1a81b.js"]
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.736df143.js"
+  ]
 }
