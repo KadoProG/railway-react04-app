@@ -40,10 +40,7 @@ export const HomePage: React.FC<HomePageProps> = ({ blogList }) => {
           {blogList.map((blogItem) => (
             <Grid item key={blogItem.id} xs={12} sm={6} md={4}>
               <Card>
-                <CardActionArea
-                  href={`${URL}/blogs/${blogItem.id}`}
-                  // onClick={() => navigation(`${URL}/blogs/${blogItem.id}`)}
-                >
+                <CardActionArea href={`${URL}/blogs/${blogItem.id}`}>
                   <CardMedia
                     component="img"
                     height="194"
@@ -52,8 +49,11 @@ export const HomePage: React.FC<HomePageProps> = ({ blogList }) => {
                   />
                   <CardContent>
                     <Chip
-                      key={blogItem.category.id}
-                      label={blogItem.category.label}
+                      label={
+                        blogItem.category !== null
+                          ? blogItem.category.label
+                          : ''
+                      }
                     />
 
                     <Typography fontWeight="bold" pt={1}>

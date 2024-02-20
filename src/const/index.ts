@@ -1,6 +1,6 @@
 export interface IBlogSummary {
-  id: number
+  id: string
   title: string
   imagePath: string
-  category: { id: number; label: string }
+  category: { categoryId: string; label: string } | null
 }
