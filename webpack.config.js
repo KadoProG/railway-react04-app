@@ -28,4 +28,8 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  externals: {
+    // Expressモジュールの内部を理解させるために追加するらしい
+    express: 'commonjs express',
+  },
 }
