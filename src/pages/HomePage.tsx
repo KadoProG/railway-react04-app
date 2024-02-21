@@ -13,7 +13,7 @@ import React from 'react'
 import { LayoutContainer } from '../components/commons/LayoutContainer'
 import { IBlogSummary } from '../const'
 
-const URL = ''
+const URL = process.env.REACT_APP_PUBLIC_URL
 
 interface HomePageProps {
   blogList: IBlogSummary[]

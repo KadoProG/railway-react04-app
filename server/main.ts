@@ -6,11 +6,20 @@ import React from 'react'
 import { HomePage } from '../src/pages/HomePage'
 import { BlogPage } from '../src/pages/BlogPage'
 import { NotFoundPage } from '../src/pages/NotFoundPage'
+import path from 'path'
+import fs from 'fs'
 const app = express()
 const port = 9000
 
-const URL = ''
+const URL = process.env.REACT_APP_PUBLIC_URL
 
+// index.htmlを読み込み
+const indexPath = path.join(__dirname, '..', 'public', 'index.html')
+const indexHtml = fs
+  .readFileSync(indexPath, 'utf-8')
+  .replaceAll('%PUBLIC_URL%', URL ?? '')
+
+// Prismaを読み込み
 const prisma = new PrismaClient()
 
 // urlencodedとjsonは別々に初期化する
@@ -34,18 +43,10 @@ app.get(`${URL}/`, async (req, res) => {
   const reactDom = ReactDOMServer.renderToString(jsx)
 
   // HTMLに変換されたAppコンポーネントを埋め込んだHTMLを作成
-  const html = `
-      <!DOCTYPE html>
-      <html lang="ja">
-      <head>
-          <meta charset="utf-8" />
-          <script src="client.js" async defer></script>
-      </head>
-      <body>
-          <div id="root">${reactDom}</div>
-      </body>
-      </html>
-  `
+  const html = indexHtml.replace(
+    '<div id="root"></div>',
+    `<div id="root">${reactDom}</div>`
+  )
 
   // コンポーネントが埋め込まれたHTMLをレスポンス
   res.send(html)
@@ -72,18 +73,10 @@ app.get(`${URL}/blogs/:blogId`, async (req, res) => {
   const reactDom = ReactDOMServer.renderToString(jsx)
 
   // HTMLに変換されたAppコンポーネントを埋め込んだHTMLを作成
-  const html = `
-      <!DOCTYPE html>
-      <html lang="ja">
-      <head>
-          <meta charset="utf-8" />
-          <script src="client.js" async defer></script>
-      </head>
-      <body>
-          <div id="root">${reactDom}</div>
-      </body>
-      </html>
-  `
+  const html = indexHtml.replace(
+    '<div id="root"></div>',
+    `<div id="root">${reactDom}</div>`
+  )
 
   // コンポーネントが埋め込まれたHTMLをレスポンス
   res.end(html)
@@ -145,5 +138,5 @@ app.use(express.static('./build'))
 
 app.listen(Number(port), () => {
   // eslint-disable-next-line
-  console.log(`\n\nsuccess!\nURL:\t\t\thttp://localhost:${port}\n\n`)
+  console.log(`\n\nsuccess!\nURL:\t\t\thttp://localhost:${port}${URL}\n\n`)
 })
