@@ -20,6 +20,7 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ blogList }) => {
+  // if (typeof window !== 'undefined') return null
   return (
     <LayoutContainer>
       <Container component={Box} mx="auto">

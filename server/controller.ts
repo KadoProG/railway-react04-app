@@ -11,7 +11,7 @@ import { BlogPage } from '../src/pages/BlogPage'
 const URL = process.env.REACT_APP_PUBLIC_URL
 
 // index.htmlを読み込み
-const indexPath = path.join(__dirname, '..', 'public', 'index.html')
+const indexPath = path.join(__dirname, 'index.html')
 const indexHtml = fs
   .readFileSync(indexPath, 'utf-8')
   .replaceAll('%PUBLIC_URL%', URL ?? '')

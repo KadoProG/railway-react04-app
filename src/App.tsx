@@ -1,14 +1,10 @@
 import React from 'react'
-import { HomePage } from './pages/HomePage'
-import { ThemeProvider } from '@mui/material'
-import { theme } from './theme/theme'
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <HomePage blogList={[]} />
-    </ThemeProvider>
-  )
+  return <></>
+  // return <LayoutContainer /> {/* これでやるとUIが取得できないというエラー */}
+  // return <LayoutClientMenu /> {/* これでやるとUIが取得できないというエラー */}
+  // return <HomePage /> {/* これでやるとUIが取得できないというエラー */}
 }
 
 export default App
